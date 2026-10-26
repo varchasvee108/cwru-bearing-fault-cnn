@@ -1,0 +1,10 @@
+__pycache__/
+.pytest_cache/
+*.egg-info/
+*.pyc
+runs/
+outputs/
+predictions.npz
+data/raw/
+wandb/
+blog.html

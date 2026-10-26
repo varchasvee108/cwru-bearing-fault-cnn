@@ -1,0 +1,33 @@
+data:
+  root: data/raw/cwru      # folder with the numbered CWRU .mat files
+  window: 1200
+  train_stride: 600
+  eval_stride: 1200
+  gap: 1200                # samples dropped between time splits to avoid leakage
+  train_frac: 0.70
+  val_frac: 0.15           # the rest is test
+
+model:
+  widths: [32, 64, 128]
+  first_kernel: 64
+  first_stride: 8
+  dropout: 0.3
+
+train:
+  seed: 42
+  output_dir: runs/cwru-cnn1d
+  epochs: 30
+  batch_size: 64
+  num_workers: 0
+  lr: 0.001
+  weight_decay: 0.01
+  warmup_steps: 100
+  label_smoothing: 0.0
+  grad_clip: 1.0
+  precision: fp32         # fp32 = mixed precision OFF; fp16 / bf16 = ON
+  grad_accum_steps: 1      # 1 = accumulation OFF; e.g. 4 = ON
+
+wandb:
+  enabled: false
+  project: cwru-cnn1d
+  run_name: null
